@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>博山印象 · 品家乡菜，识陶琉手艺，听孝乡故事</title>
+  <meta name="description" content="逛博山大街，赏独立陶琉器物，摘猕猴桃：听孝乡故事，认识山城风物与传统手艺。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='16' fill='%238b3e2c'/%3E%3Ctext x='40' y='55' text-anchor='middle' font-size='48' fill='%23faf4e7'%3E博%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="fonts/boshan-note.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/boshan-marker.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="handmade.css">
+</head>
+<body class="cover-open">
+  <audio id="background-music" src="./assets/boshan-background.m4a" loop preload="metadata"></audio>
+  <script src="music.js" defer></script>
+  <section id="cover" aria-labelledby="cover-title">
+    <div class="cover-top"><span>山东 · 淄博 · 博山</span><span>一座山城，慢慢认识</span></div>
+    <div class="cover-layout"><div class="cover-copy"><p class="eyebrow">隔着屏幕，也能逛一逛家乡</p><h1 id="cover-title">云游<span>博山</span></h1><p class="cover-subtitle">逛一条老街，听一段孝乡故事，<br>识一门手艺，尝一口秋甜。</p><button id="cover-start" class="primary">走，去博山逛逛 <span>→</span></button><p class="cover-note">点一点，走一走，把喜欢的留进小记。</p></div><div class="cover-art" aria-hidden="true"><div class="cover-street"><img src="./assets/street.png" alt=""><span>大街里的烟火气</span></div><img class="cover-gate" src="./assets/gate.png" alt=""><div class="cover-treasures"><img src="./assets/craft-yellow.png" alt=""><img src="./assets/food-spring.png" alt=""><img src="./assets/fruit.png" alt=""></div><span class="cover-scribble">有好吃的，也有好故事。</span></div></div>
+    <div class="cover-bottom"><span>大街烟火 / 孝乡记忆 / 陶琉手艺</span><span>来博山，慢慢逛。</span></div>
+  </section>
+  <header inert><a class="wordmark" href="./">博山<span>山城小记</span></a><span class="edition">来博山，慢慢逛</span><button id="music-toggle" aria-pressed="false" aria-label="播放背景音乐">♫ 音乐关</button><button id="return" class="text-button" hidden>← 回到起点</button></header>
+  <main inert>
+    <div class="intro"><div><p class="eyebrow" id="eyebrow">一条街，家乡的日常</p><h1 id="scene-title">逛一逛大街</h1></div><p class="intro-copy" id="intro-copy">穿过蓝绿的牌坊，<br>去看看今天摊上有什么。</p></div>
+    <nav class="scene-tabs" aria-label="选择博山场景"><button data-scene="dajie" aria-pressed="true">01 大街</button><button data-scene="memory" aria-pressed="false">02 山城记忆</button><button data-scene="xiye" aria-pressed="false">03 西冶街</button></nav>
+    <section id="scene" aria-label="博山大街图片构成的三维场景">
+      <canvas id="canvas" aria-label="大街牌坊和两侧菜摊，鼠标移动可查看前后层次"></canvas>
+      <div id="loading" role="status"><span class="loader"></span><p>摆好摊位，等你来逛。</p></div>
+      <div class="scene-caption"><span id="chapter">01 / 街口</span><span>秋日 · 午后</span></div>
+      <button id="portal" class="hotspot" aria-label="穿过大街牌坊"><i></i><span>走进大街 <b>↗</b></span></button>
+      <div id="tooltip" hidden></div>
+      <aside id="scene-guide" hidden aria-label="玩法提示"><span class="guide-kicker">这样逛，更有意思</span><p id="guide-text"></p><button id="close-guide" aria-label="收起玩法提示">×</button></aside>
+      <div id="scene-curtain" aria-hidden="true"></div>
+      <div id="harvest" hidden><span id="harvest-count" aria-live="polite">篮子里 0 / 3 颗</span><button id="pick-next">摘一颗 ↓</button><button id="harvest-intro" hidden>这一口甜的来处 ↗</button><button id="reset-fruit" hidden>再摘一次 ↻</button></div>
+      <div id="error" role="alert" hidden>场景暂时未能加载。请刷新页面，或使用下方按钮查看设计参考。<a href="../boshan-scene-design-v2.png">查看设计图</a></div>
+      <div id="inside-note" hidden><span>大街里</span><p>菜篮里的颜色，<br>就是家乡的烟火。</p></div>
+    </section>
+    <div class="controls"><p id="hint">移动鼠标看层次 · 点击门洞走进去</p><button id="enter" class="primary">走进大街 <span>→</span></button><div class="progress" aria-hidden="true"><span id="progress"></span></div></div>
+    <div class="discover" aria-label="场景里的互动"><span>顺手看看</span><button id="feature-one">尝尝博山菜 ↗</button><button id="feature-two">看看菜摊 ↗</button><button id="help-guide" class="text-button">玩法提示 ?</button></div>
+    <div id="food-choices" class="craft-choices" hidden aria-label="选择一道博山菜"><span>端近一点看</span></div>
+    <div id="craft-choices" class="craft-choices" hidden aria-label="选择陶琉器物"><span>一件一件看</span></div>
+    <section class="journey" aria-label="继续游逛"><div><p class="eyebrow">家乡小路，慢慢走</p><p id="journey-status" aria-live="polite"></p></div><div class="journey-actions"><button id="next-station" class="primary">去看看山城 →</button><button id="open-notebook" class="text-button">翻翻游逛小记 ↗</button></div></section>
+    <footer><span>也可以滚动或上下滑动，慢慢往里走。</span><span>照片参考的艺术化场景 · 非街区实测复原</span></footer>
+  </main>
+  <dialog id="detail"><button id="close-detail" aria-label="关闭介绍">×</button><div class="detail-image"><img id="detail-img" alt="场景素材近景"></div><div class="detail-copy"><p class="eyebrow" id="detail-category">逛一逛 · 大街菜摊</p><h2 id="detail-title"></h2><p id="detail-text"></p><div id="detail-facts"></div><div id="food-options" hidden aria-label="选择一道博山菜"></div><div id="craft-options" hidden aria-label="切换陶琉器物"></div><details id="detail-sources" hidden><summary>延伸阅读 · 资料出处</summary><div id="source-links"></div></details><button id="continue" class="text-button">放回去，继续逛 →</button></div></dialog>
+  <dialog id="notebook" aria-labelledby="notebook-title"><button id="close-notebook" aria-label="合上小记">×</button><p class="eyebrow">这一次，慢慢逛过</p><h2 id="notebook-title">博山游逛小记</h2><p class="notebook-intro">把刚刚看过的小东西，留在这一页。</p><div id="notebook-pages"></div><section class="notebook-invitation"><p class="eyebrow">屏幕里逛过，山城里再见</p><h3>来博山，亲自逛一回。</h3><p>到大街尝一口热乎的博山菜，听听孝乡的故事，<br>看看陶琉艺人的手上功夫，再把源泉的秋甜带回家。</p></section><p class="notebook-footnote">本页记录这次游逛，刷新后重新开始。</p><button id="back-to-scene" class="primary">合上小记，接着逛 →</button></dialog>
+  <script type="module" src="scene.js"></script>
+</body>
+</html>
